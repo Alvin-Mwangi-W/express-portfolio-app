@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <%- include('partials/header') %>
+    <div class="container">
+        <h1 class="text-center my-5">My Services</h1>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <img src="/images/web-development.png" class="card-img-top" alt="Web Development">
+              <div class="card-body">
+                <h5 class="card-title">Web Development</h5>
+                <p class="card-text">I offer a full range of web development services, including responsive design, e-commerce solutions, and custom CMS integration. Whether you need a simple brochure website or a complex web application, I have the skills and experience to bring your vision to life.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img src="/images/mobile-app.jpg" class="card-img-top" alt="Mobile Apps">
+              <div class="card-body">
+                <h5 class="card-title">Mobile Apps</h5>
+                <p class="card-text">I specialize in developing high-quality mobile apps for iOS and Android. I have experience with both native app development and cross-platform development using frameworks like React Native. Let me help you take your app idea from concept to reality.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img src="/images/programming.jpg" class="card-img-top" alt="Programming">
+              <div class="card-body">
+                <h5 class="card-title">Programming</h5>
+                <p class="card-text">I am an experienced general programmer and can help you with any programming related task. I am well-versed in a variety of programming languages and frameworks, including but not limited to: Java, Python, JavaScript, C++, and many others. I can help you with bug fixing, optimization, and software development.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

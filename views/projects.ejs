@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body>
+    <%- include('partials/header') %>
+    <div class="container">
+        <h1 class="text-center my-5">My Projects</h1>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card">
+              <img src="/images/project1.webp" class="card-img-top" alt="Project 1">
+              <div class="card-body">
+                <h5 class="card-title">Project 1</h5>
+                <p class="card-text">I was the lead developer on this project, which involved building a website for a local small business. The outcome was a professional and user-friendly website that helped the business increase their online presence and sales.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img src="/images/project2.png" class="card-img-top" alt="Project 2">
+              <div class="card-body">
+                <h5 class="card-title">Project 2</h5>
+                <p class="card-text">I was a team member on this project, which was a mobile app for a national retail chain. My role was to implement the user authentication and account management system. The outcome was a successful app that was downloaded by thousands of users.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card">
+              <img src="/images/project3.jpeg" class="card-img-top" alt="Project 3">
+              <div class="card-body">
+                <h5 class="card-title">Project 3</h5>
+                <p class="card-text">I was the sole developer on this project, which was a personal blog website. I used a combination of HTML, CSS, and JavaScript to create a visually appealing and easy-to-use website. The outcome was a website that received positive feedback from users.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
