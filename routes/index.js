@@ -19,6 +19,18 @@ router.post('/login', (req, res) => {
   }
 });
 
+// Check if user is authenticated 
+router.get('/business-contacts', (req, res) => {
+  if (!req.session.authenticated) {
+    // Not authenticated, redirect back to Login View
+    res.redirect('/login');
+  } else {
+    // Authenticated, render Business Contacts List View
+    res.render('business-contacts');
+  }
+});
+
+
 // GET home page. 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
