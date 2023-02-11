@@ -1,7 +1,25 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
+
+// Hardcoded user data for authentication
+const user = {
+  username: 'admin',
+  password: 'password'
+};
+
+// Login Route
+router.post('/login', (req, res) => {
+  if (req.body.username === user.username && req.body.password === user.password) {
+    // Authenticated, redirect to Business Contacts List View
+    res.redirect('/business-contacts');
+  } else {
+    // Not Authenticated, redirect back to Login View
+    res.redirect('/login');
+  }
+});
+
+// GET home page. 
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
