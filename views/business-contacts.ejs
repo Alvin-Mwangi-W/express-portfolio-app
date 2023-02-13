@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title><%=title %></title>
+</head>
+<body>
+<!-- Nav-Bar -->
+<%- include('partials/header') %>
+    <!-- Business Contacts List View Template -->
+<div class="container">
+    <h1 class="text-center my-5">Business Contacts</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through the contacts and display each one in a table row -->
+        <% contacts.forEach(contact => { %>
+        <tr>
+          <td><%= contact.username %></td>
+          <td><%= contact.email %></td>
+          <td>
+            <a href="/update/<%= contact._id %>" class="btn btn-primary">Edit</a>
+          </td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  </div>
+  
+
+</body>
+</html>
