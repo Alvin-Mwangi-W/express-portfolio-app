@@ -24,27 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 const bcrypt = require('bcrypt');
 
-app.post('/login', function(req, res) {
-    const { username, password } = req.body;
-    User.findOne({ username }, function(err, user) {
-        if (err) {
-            res.redirect('/login');
-        }
-        if (!user) {
-            res.redirect('/login');
-        }
-        bcrypt.compare(password, user.password, function(err, result) {
-            if (result) {
-                req.session.user = user;
-                res.redirect('/contacts');
-            } else {
-                res.redirect('/login');
-            }
-        });
-    });
-});
-
-
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
