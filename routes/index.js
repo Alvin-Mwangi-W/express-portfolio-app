@@ -1,14 +1,9 @@
 var express = require('express');
 var router = express.Router();
-// const collection = require('../db')
 
-// Hardcoded user data for authentication
-// const user = {
-//   username: 'admin',
-//   password: 'password'
-// };
+// const firebaseApp = firebase.app();
 
-// GET home page. 
+/* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
@@ -29,70 +24,44 @@ router.get('/contact', function(req, res, next) {
   res.render('contact', { title: 'Contact Me' });
 });
 
-router.get("/login", (req, res, next) => {
-  res.render("login", { title: "Login" });
+router.get('/login', function(req, res, next) {
+  res.render('login', { title: 'Login' });
 });
 
+router.post('/login', (req, res) => {
+  const email = req.body.email;
+  const password = req.body.password;
 
-
-router.get("/business-contacts", (req, res) => {
-  if (!req.session.user) return res.redirect('login');
-
-  Contact.find({}).sort({ name: 1 }).exec(function(err, contacts) {
-    if (err) {
-        res.redirect('/login');
-    }
-    res.render('business-contacts', { contacts });
-  });
-
-  //res.render("business-contacts", { title: "Business Contacts" });
+  firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(() => {
+      res.redirect('/contacts');
+    })
+    .catch((error) => {
+      res.render('login', { error: req.flash(message) });
+    });
 });
 
-// function isAuthenticated(req, res, next) {
-//   if (req.session.user) {
-//       next();
-//   } else {
-//       res.redirect('/login');
-//   }
-// }
+router.get('/business_contacts', (req, res) => {
+  // Retrieve business contacts from Firebase database and render the contacts page with the data
+  const contactsData = firebase.database().ref('contacts');
 
-// route.get('/contacts', isAuthenticated, function(req, res) {
-// });
-
-// rou.post('/update-contact', isAuthenticated, function(req, res) {
-
-// });
-
-// app.post('/delete-contact', isAuthenticated, function(req, res) {
-// });
-
-router.post("/login", async (req, res) => {
-  
-  // const { username, password } = req.body;
-  const data = {
-    username: req.body.username,
-    password: req.body.password
-  }
-
-  await collection.insertMany([data]);
-
-  res.render('index');
-  // const user = await db.collection("users").findOne({ username });
-
-  // if (!user) return res.redirect("/login");
-
-  // const isValid = await bcrypt.compare(password, user.password);
-
-  // if (isValid) {
-  //   req.session.user = user;
-
-  //   return res.redirect("/business-contacts");
-  // } else {
-  //   return res.redirect("/login");
-  // }
+  // res.render('business_contacts', { contacts: contactsData });
+  res.render('business_contacts'), { title: 'Bs Contacts'};
 });
 
+router.get('/update', (req, res) => {
+  res.render('update');
+});
 
-
+router.post('/update', (req, res) => {
+  const user = firebase.auth().currentUser;
+  user.updateEmail(req.body.email)
+    .then(() => {
+      res.render('update', { success: 'Email updated successfully!' });
+    })
+    .catch((error) => {
+      res.render('update', { error: error.message });
+    });
+});
 
 module.exports = router;
